@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form method="POST", action="" class="border p-4 mt-2">
+                {{ form_criar_post.csrf_token }}
+                <legend>Criar Post</legend>
+                <fieldset>
+                    <div class="form-goup">
+                        {{ form_criar_post.title.label(class="form-control-label") }}
+                        {% if form_criar_post.title.errors %}
+                            {{ form_criar_post.title(class="form-control is-invalid") }}
+                        <div class=" invalid-feedback">
+                            {% for erro in form_criar_post.title.errors %}
+                                {{ erro }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criar_post.title(class="form-control") }}
+                        
+                        
+                        {% endif %}
+                        
+                    </div>
+                    <div class="form-goup">
+                        {{ form_criar_post.body.label(class="form-control-label") }}
+                        {% if form_criar_post.body.errors %}
+                            {{ form_criar_post.body(class="form-control is-invalid") }}
+                        <div class=" invalid-feedback">
+                            {% for erro in form_criar_post.body.errors %}
+                                {{ erro }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criar_post.body(class="form-control") }}
+                        
+                        {% endif %}
+                
+                    </div>
+                </fieldset>
+                    {{ form_criar_post.button_submit(class="btn btn-primary mt-3") }}
+                    
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+    
